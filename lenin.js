@@ -380,10 +380,6 @@ const links = [
         "url": "https://hrono.ru/dokum/192_dok/19200920lenin.html"
     },
     {
-        "name": "Записка В. И. Ленина И. ",
-        "url": "https://hrono.ru/dokum/192_dok/1920financ.html#2"
-    },
-    {
         "name": "Письмо В.И. Ленина Ф.Э. Дзержинскому</a>. 19 мая 1922 г.",
         "url": "https://hrono.ru/dokum/192_dok/19220519len.html"
     },
