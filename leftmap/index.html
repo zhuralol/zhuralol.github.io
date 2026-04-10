@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карта левых эмигрантских сообществ</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="home-btn">← На главную</a>
+    <div class="header-logo">
+      <span class="star">&#9733;</span>
+      <h1>Карта левых эмигрантских сообществ</h1>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item">Сообществ: <span class="stat-value" id="stat-total">0</span></div>
+      <div class="stat-item">Стран: <span class="stat-value" id="stat-countries">0</span></div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="map">Карта</button>
+      <button class="tab-btn" data-tab="table">Таблица</button>
+      <button class="tab-btn" data-tab="about">О проекте</button>
+    </div>
+  </header>
+
+  <div id="map-view">
+    <div id="map"></div>
+  </div>
+
+  <div id="table-view">
+    <div class="filter-bar">
+      <label for="country-filter">Страна:</label>
+      <select id="country-filter">
+        <option value="">Все страны</option>
+      </select>
+      <input type="text" id="search-input" class="search-input" placeholder="Поиск по названию или городу...">
+    </div>
+    <div class="table-wrapper">
+      <table class="community-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Название</th>
+            <th>Город</th>
+            <th>Описание</th>
+            <th>Ссылки</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="about-view">
+    <div class="about-content">
+      <p>Карта левых эмигрантских сообществ — это проект, вдохновленный <a href="https://bookshopmap.ru/" target="_blank" rel="noopener">Картой независимых книжных</a>.</p>
+      <p>Здесь собраны сообщества, которые объединяют русскоязычных эмигрантов левых взглядов.</p>
+      <p>По соображениям безопасности, здесь не будет сообществ находящихся на территориях, контролируемых путинским режимом.</p>
+      <p>Если вы хотите добавить своё сообщество в список, оставьте заявку здесь:<br>
+        <a href="https://cryptpad.fr/form/#/3/form/view/a2a5b519445c8e3d7fe439993bf4bb9c/" target="_blank" rel="noopener">https://cryptpad.fr/form/#/3/form/view/a2a5b519445c8e3d7fe439993bf4bb9c/</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

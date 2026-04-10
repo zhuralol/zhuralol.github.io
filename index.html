@@ -1,143 +1,339 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>zhura.lol</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    *, *::after, *::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── Profile ── */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .profile-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+
+    .profile-info h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .profile-info .handle {
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .profile-info .bio {
+      font-size: 0.88rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ── Links row ── */
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .link-chip {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #aaa;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.3rem 0.7rem;
+      transition: all 0.2s;
+    }
+
+    .link-chip:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Experience ── */
+    .experience {
+      margin-bottom: 3rem;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-org {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #e23636;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-role {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-desc {
+      font-size: 0.84rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    .exp-desc p + p {
+      margin-top: 0.35rem;
+    }
+
+    .exp-desc a {
+      color: #aaa;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .exp-desc a:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .exp-period {
+      font-size: 0.78rem;
+      color: #444;
+      white-space: nowrap;
+      padding-top: 0.1rem;
+    }
+
+    /* ── Projects ── */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      display: block;
+    }
+
+    .project-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(226, 54, 54, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .project-card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-card p {
+      font-size: 0.84rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      font-size: 0.8rem;
+      color: #333;
+    }
+
+    .footer a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #888;
+    }
+
+    @media (max-width: 480px) {
+      .profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+<body>
+<div class="page">
 
+  <div class="profile">
+    <img src="/about/photo.jpg" alt="Zhura" class="profile-photo">
+    <div class="profile-info">
+      <h1>Владимир Журавлев</h1>
+      <div class="handle">aka Zhura · Serbia, Belgrade</div>
+      <div class="bio">Jack of all trades. Айтишник, разработчик бота для moloko.plus, книгоиздатель, автор статей про игры, телеграм-канал про всё это.</div>
+    </div>
+  </div>
 
-<link rel="stylesheet" href="style.css">
-<script src="scripts.js"></script>
-<div class="resume-wrapper">
-	<section class="profile section-padding">
-		<div class="container">
-			<div class="picture-resume-wrapper">
-        <div class="picture-resume">
-        <span><img src="photo.jpg" alt="" /></span>
+  <div class="links-row">
+    <a href="https://t.me/zhuralol" class="link-chip" rel="me">Telegram</a>
+    <a href="https://t.me/ru_sjw" class="link-chip" rel="me">Русский SJW</a>
+    <a href="https://github.com/zhuralol" class="link-chip" rel="me">GitHub</a>
+    <a href="https://twitter.com/zhuralol" class="link-chip" rel="me">Twitter</a>
+    <a href="https://t.me/directio_libera" class="link-chip">directio libera</a>
+    <a href="https://moloko.plus" class="link-chip">moloko plus</a>
+  </div>
+
+  <div class="section-label">Опыт</div>
+  <div class="experience">
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-org"><a href="https://t.me/ruleft_serbia" style="color:inherit;text-decoration:none;">Сербский Левый Клуб</a></div>
+        <div class="exp-role">делаю всякое</div>
+        <div class="exp-desc"><p>👀</p></div>
       </div>
+      <div class="exp-period">с июля 2024</div>
+    </div>
 
- </div>
-      <div class="name-wrapper">
-        <h1>Владимир <br/>Журавлев</h1>
-        <h2>aka <br/>Zhura</h2>
-      </div>
-      <div class="clearfix"></div>
-      <div class="contact-info clearfix">
-      	<ul class="list-titles">
-      		<!-- <li>Телефон</li> -->
-      		<li>Почта</li>
-      		<li>Сайт</li>
-      		<li>Локация</li>
-      	</ul>
-        <ul class="list-content ">
-        	<!-- <li>ask for it</li> <!-- YOUR PHONE NUMBER  -->
-        	<li>zhuravlev at moloko.plus</li>
-        	<li><a class="black" href="#">zhura.lol</a></li>
-        	<li>Serbia, Belgrade</li>
-        </ul>
-      </div>
-      <div class="contact-presentation">
-      	<p><span class="bold">Jack of all trades</span></p>
-      	<p>По ремеслу айтишник (>3 лет опыта в L2 Tech Support), разрабатываю бота для moloko.plus. Занимался уличным активизмом. Сейчас книгоиздатель, пишу статьи про игры и не только, веду телеграм-канал про всё это</p>
-      </div>
-      <div class="contact-social clearfix">
-      	<ul class="list-titles">
-      		<li>Twitter</li>
-      		<li>GitHub</li>
-      		<li>Telegram</li>
-      		<li>мой канал</li>
-			<li>издательство</li>
-			<li>альманах</li>
-      	</ul>
-        <ul class="list-content">
-      		<li><a class="black" href="https://twitter.com/zhuralol" rel="me">@zhuralol</a></li>
-      		<li><a class="black" href="https://github.com/zhuralol" rel="me">zhuralol</a></li>
-      		<li><a class="black" href="https://t.me/zhuralol" rel="me">@zhuralol</a></li>
-      		<li><a class="black" href="https://t.me/ru_sjw" rel="me">Русский SJW</a></li>
-			<li><a class="black" href="https://t.me/directio_libera" >directio libera</a></li>
-			<li><a class="black" href="https://moloko.plus">moloko plus</a></li>
-      	</ul>
-      </div>
-		</div>
-	</section>
-
-  <section class="experience section-padding">
-  	<div class="container">
-  		<h3 class="experience-title">Не жизнь, а сплошное получение полезного опыта</h3>
-
-      <div class="experience-wrapper">
-      	<div class="company-wrapper clearfix">
-      		<div class="experience-title">moloko plus <a href=""></a></div>
-          <div class="time">с 2022</div>
-      	</div>
-
-        <div class="job-wrapper clearfix">
-        	<div class="experience-title">Разработчик, иногда соавтор текстов</div> <!-- JOB TITLE  -->
-          <div class="company-description">
-          	<p>В одиночку разрабатываю телеграм-бота на Python для интеграции заказов из тильды, публичного API Почты России и принтера для этикеток. Сэкономил сотни человеко-часов. Public repo tba</p>
-          	<p>Стек: Python, AIOgram, pochta.ru, dadata</p>
-          	<p><a href="https://moloko.plus/almanac">«Государство»</a>: соавтор «Правил жизни Мао Цзедуна» и <a href="https://vatnikstan.ru/history/tanki-v-stolicze/">титанического текста про события 1993 года</a></p>
-			<p><a href="https://moloko.plus/podcast">Подкаст «Руки за голову»</a>: project manager</p>
-          </div>
-
+    <div class="exp-item">
+      <div>
+        <div class="exp-org">moloko plus</div>
+        <div class="exp-role">Разработчик, иногда соавтор текстов</div>
+        <div class="exp-desc">
+          <p>Телеграм-бот на Python для интеграции заказов из тильды, API Почты России и принтера этикеток. Сэкономил сотни человеко-часов.</p>
+          <p>Стек: Python, AIOgram, pochta.ru, dadata</p>
+          <p><a href="https://moloko.plus/almanac">«Государство»</a>: соавтор «Правил жизни Мао Цзедуна» и <a href="https://vatnikstan.ru/history/tanki-v-stolicze/">текста про события 1993 года</a></p>
+          <p><a href="https://moloko.plus/podcast">Подкаст «Руки за голову»</a>: project manager</p>
         </div>
+      </div>
+      <div class="exp-period">с 2022</div>
+    </div>
 
-        <div class="company-wrapper clearfix">
-      		<div class="experience-title">издательство directio libera <a href=""></a></div>
-          <div class="time">с 29 сентября 2021 года</div>
-      	</div>
-
-         <div class="job-wrapper clearfix">
-        	<div class="experience-title">Сооснователь, редактор, веду проекты</div>
-          <div class="company-description">
-          	<p>Издатель книги <a href="https://t.me/alnapisal">Алексея Жабина</a> <a href="https://moloko.plus/books/tproduct/565075711-861611652981-konets-svobodnoi-epohi-litsa-bolotnoi">«Конец свободной эпохи. Лица Болотной»</a> о людях, которых навсегда изменили события 6 мая 2012 года на Болотной площади: патриоты, оппозиционеры, журналисты. </p>
-          </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-org">издательство directio libera</div>
+        <div class="exp-role">Сооснователь, редактор</div>
+        <div class="exp-desc">
+          <p>Издал книгу <a href="https://t.me/alnapisal">Алексея Жабина</a> <a href="https://moloko.plus/books/tproduct/565075711-861611652981-konets-svobodnoi-epohi-litsa-bolotnoi">«Конец свободной эпохи. Лица Болотной»</a> — о людях, которых изменили события 6 мая 2012 года.</p>
+          <p>Издатель: <a href="https://directiolibera.com/tproduct/132777032531-novii-sibirskii-poryadok-letnii-tur-2022">Новый сибирский порядок. Летний тур 2022 года глазами участников и очевидцев</a></p>
+          <p>Издатель и составитель: <a href="https://directiolibera.com/trotsky">Изнанка победы: Балканы и балканская война</a></p>
+          <p>Издатель: <a href="https://directiolibera.com/tproduct/858458945321-kratkaya-sistema-anarhizma-v-desyati-bes">Краткая система анархизма в десяти беседах</a></p>
+          <p>Издатель, предисловие: <a href="https://directiolibera.com/tproduct/848059397251-industrialnoe-obschestvo-i-ego-buduschee">Индустриальное общество и его будущее, а также другие тексты</a></p>
+          <p>И другие книги</p>
         </div>
+      </div>
+      <div class="exp-period">с 2021</div>
+    </div>
 
-        <div class="company-wrapper clearfix">
-      		<div class="experience-title">Издательский кооператив <a href="https://napilnik.store">«Напильник»</a></div>
-          <div class="time">2020 - 29 сентября 2021 года</div>
-      	</div>
-
-         <div class="job-wrapper clearfix">
-        	<div class="experience-title">Сооснователь, редактор, веду проекты</div> <!-- JOB TITLE  -->
-          <div class="company-description">
-          	<p>Издатель первого в современной России отдельного издания <a href="https://moloko.plus/books/tproduct/565075711-848986427371-katehizis-revolyutsionera">«Катехизиса революционера»</a> Сергея Нечаева</p>
-          	<p>Наладил процесс выпуска самиздатовских брошюр на бюджет 10К ₽</p>
-          </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-org"><a href="https://napilnik.store" style="color:inherit;border-bottom:none;">Издательский кооператив «Напильник»</a></div>
+        <div class="exp-role">Сооснователь, редактор</div>
+        <div class="exp-desc">
+          <p>Издал первое в современной России отдельное издание <a href="https://moloko.plus/books/tproduct/565075711-848986427371-katehizis-revolyutsionera">«Катехизиса революционера»</a> Нечаева.</p>
+          <p>Наладил выпуск самиздатовских брошюр на бюджет 10К ₽.</p>
         </div>
-
       </div>
+      <div class="exp-period">2020–2021</div>
+    </div>
 
-      <div class="section-wrapper clearfix">
-      	<h3 class="section-title">Skills</h3>
-        	<ul>
-        		<li class="skill-percentage">Python</li>
-        		<li class="skill-percentage">GNU/Linux</li>
-        		<li class="skill-percentage">bash</li>
-        		<li class="skill-percentage">Написание текстов</li>
-        		<li class="skill-percentage">Верстка</li>
-        		<li class="skill-percentage">Интервью</li>
-        		<li class="skill-percentage">Самиздат</li>
-        		<li class="skill-percentage">Дизайн</li>
+  </div>
 
-        	</ul>
+  <div class="section-label">Проекты</div>
+  <div class="projects">
+    <a href="/lenin/" class="project-card">
+      <span class="icon">📜</span>
+      <h2>Случайный Ленин</h2>
+      <p>Случайные цитаты и статьи В.И. Ленина. Нажми кнопку — получи ссылку на произведение.</p>
+    </a>
 
-      </div>
+    <a href="/leftmap/" class="project-card">
+      <span class="icon">🗺️</span>
+      <h2>Карта левых сообществ</h2>
+      <p>Карта левых эмигрантских сообществ. Найди единомышленников в своём городе.</p>
+    </a>
+  </div>
 
-      <div class="section-wrapper clearfix">
-        <h3 class="section-title">Хобби</h3>
-        <p>Пыть пыво, играть в глобальные стратегии, пересылать мемы друзьям</p>
+  <div class="footer">
+    zhuravlev at moloko.plus
+  </div>
 
-        <p>Делать небольшие сайд-проекты на питоне</p>
-        <p>Хочу воплотить в жизнь игру мечты, когда будет на это время</p>
-      </div>
-
-  	</div>
-  </section>
-
-  <div class="clearfix"></div>
 </div>
+</body>
 </html>

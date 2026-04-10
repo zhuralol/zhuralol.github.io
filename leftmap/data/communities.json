@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Левый Клуб Сербии",
+    "description": "Сообщество русскоязычных левых в Сербии. Регулярные встречи, дискуссии, взаимопомощь.",
+    "country": "Сербия",
+    "city": "Белград",
+    "lat": 52.52,
+    "lng": 13.405,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/ruleft_serbia" },
+      { "type": "instagram", "url": "https://instagram.com/ruleft_serbia/" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Left-wing Community in Yerevan",
+    "description": "Левые эмигранты в Ереване. Лево-либертарное сообщество.",
+    "country": "Армения",
+    "city": "Ереван",
+    "lat": 41.7151,
+    "lng": 44.8271,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/leftyerevan" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Парижская коммуна 2.0",
+    "description": "Русскоязычное левое сообщество в Париже.",
+    "country": "Франция",
+    "city": "Париж",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/example_paris" },
+      { "type": "instagram", "url": "https://instagram.com/example_paris" }
+    ]
+  }
+]
