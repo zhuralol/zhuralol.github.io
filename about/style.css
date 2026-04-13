@@ -399,6 +399,39 @@
 }
 
 
+@media (max-width: 768px) {
+	.profile .picture-resume-wrapper {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	.profile .name-wrapper {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	.profile .contact-info {
+		margin-top: 40px;
+	}
+	.profile .list-titles,
+	.profile .list-content {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	.profile .contact-presentation {
+		text-align: center;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.profile .contact-social .list-titles,
+	.profile .contact-social .list-content {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+}
+
 @keyframes rainbow-bg{
 		100%,0%{
 			background-color: rgb(255,0,0);
