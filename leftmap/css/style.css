@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --header-height: 56px;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: #0f0f1a;
@@ -112,10 +116,73 @@ header h1 {
   box-shadow: 0 2px 8px rgba(226, 54, 54, 0.4);
 }
 
+/* ── Burger button (hidden on desktop) ── */
+.burger-btn {
+  display: none;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #aaa;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.burger-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Mobile nav dropdown (hidden by default) ── */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #1a1a2e;
+  border-bottom: 1px solid rgba(226, 54, 54, 0.2);
+  z-index: 999;
+  position: sticky;
+  top: var(--header-height);
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #888;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobile-nav-btn:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.mobile-nav-btn.active {
+  color: #e23636;
+  background: rgba(226, 54, 54, 0.05);
+}
+
 /* ── Map View ── */
 #map-view {
   width: 100%;
-  height: calc(100vh - 56px);
+  height: calc(100vh - var(--header-height));
 }
 
 #map {
@@ -280,7 +347,7 @@ header h1 {
 #table-view {
   display: none;
   padding: 1.5rem 2rem;
-  height: calc(100vh - 56px);
+  height: calc(100vh - var(--header-height));
   overflow-y: auto;
 }
 
@@ -441,7 +508,7 @@ header h1 {
 #about-view {
   display: none;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - var(--header-height));
   align-items: flex-start;
   justify-content: center;
 }
@@ -515,27 +582,134 @@ header h1 {
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
+  :root {
+    --header-height: 48px;
+  }
+
+  body {
+    overflow-y: auto;
+    height: auto;
+  }
+
   header {
     padding: 0 0.75rem;
-    gap: 0.25rem;
+    gap: 0.5rem;
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
   }
 
   header h1 {
-    font-size: 0.85rem;
+    display: none;
   }
 
   .home-btn {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    white-space: nowrap;
   }
 
   .stats-bar {
     display: none;
   }
 
-  .tab-btn {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
+  .tabs {
+    display: none;
+  }
+
+  .burger-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  #map-view {
+    height: 60vh;
+  }
+
+  #table-view {
+    height: auto;
+    min-height: calc(100vh - var(--header-height));
+    padding: 1rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .filter-bar label {
+    display: none;
+  }
+
+  .filter-bar select,
+  .search-input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Card layout for table entries on mobile */
+  .table-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .community-table thead {
+    display: none;
+  }
+
+  .community-table tbody tr {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .community-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .community-table td {
+    display: block;
+    padding: 0;
+    border: none;
+    font-size: 0.88rem;
+  }
+
+  .community-table .logo-cell {
+    display: none;
+  }
+
+  .community-table .name-cell {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .community-table .location-cell {
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .community-table .desc-cell {
+    display: block !important;
+    margin-bottom: 0.5rem;
+    color: #777;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .community-table tbody tr:hover td {
+    background: transparent;
+  }
+
+  .community-table .links {
+    margin-top: 0.4rem;
+  }
+
+  #about-view {
+    min-height: auto;
+    padding: 2rem 1rem;
   }
 }
 
@@ -575,3 +749,5 @@ header h1 {
     display: none;
   }
 }
+
+
