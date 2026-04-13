@@ -117,26 +117,48 @@ function initTable() {
   render();
 }
 
-function initTabs() {
-  const btns = document.querySelectorAll('.tab-btn');
+function switchTab(tab) {
   const views = {
     map: document.getElementById('map-view'),
     table: document.getElementById('table-view'),
     about: document.getElementById('about-view'),
   };
 
-  btns.forEach(btn => {
+  const displayMode = { map: 'block', table: 'block', about: 'flex' };
+  Object.entries(views).forEach(([key, el]) => {
+    el.style.display = key === tab ? displayMode[key] : 'none';
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  document.querySelectorAll('.mobile-nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+
+  if (tab === 'map') setTimeout(() => map.invalidateSize(), 50);
+}
+
+function initTabs() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  const burgerBtn = document.getElementById('burger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  burgerBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      Object.entries(views).forEach(([key, el]) => {
-        el.style.display = key === btn.dataset.tab ? (key === 'map' ? 'block' : 'flex') : 'none';
-      });
-
-      if (btn.dataset.tab === 'map') map.invalidateSize();
+      switchTab(btn.dataset.tab);
+      mobileNav.classList.remove('open');
+      window.scrollTo(0, 0);
     });
   });
 }
 
 document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('load', () => { if (map) map.invalidateSize(); });
