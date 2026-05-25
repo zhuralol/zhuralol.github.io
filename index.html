@@ -3,350 +3,382 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>zhura.lol</title>
+  <title>Владимир Журавлёв · zhura.lol</title>
+  <meta name="description" content="Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.">
+  <meta property="og:title" content="Владимир Журавлёв · zhura.lol">
+  <meta property="og:description" content="Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.">
+  <meta property="og:image" content="https://zhura.lol/about/photo.jpg">
+  <meta property="og:type" content="website">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-    *, *::after, *::before {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --border-soft: #1f1f1f;
+      --text: #f0ede4;
+      --text-body: #d4d0c5;
+      --text-muted: #a8a394;
+      --text-meta: #8a857a;
+      --text-faint: #555;
+      --serif: 'Source Serif 4', Georgia, serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
     }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0f0f1a;
-      color: #e0e0e0;
-      min-height: 100vh;
-      padding: 3rem 1.5rem 4rem;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text-body);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .page {
-      max-width: 720px;
+    .wrap {
+      max-width: 640px;
       margin: 0 auto;
+      padding: 3.5rem 1.5rem 6rem;
     }
 
-    /* ── Profile ── */
-    .profile {
+    a { color: var(--text); text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 3px; transition: opacity 0.15s; }
+    a:hover { opacity: 0.7; }
+
+    h1 { font-size: 28px; font-weight: 500; margin: 0 0 5px; letter-spacing: -0.01em; color: var(--text); line-height: 1.2; }
+    h2 { font-size: 12px; font-weight: 500; margin: 0; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-meta); font-family: var(--mono); }
+
+    header { margin-bottom: 3rem; }
+
+    .id {
       display: flex;
-      align-items: center;
-      gap: 1.8rem;
-      margin-bottom: 2.5rem;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
     }
 
-    .profile-photo {
-      width: 90px;
-      height: 90px;
+    .photo {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.08);
+      background: var(--surface);
+      border: 0.5px solid var(--border);
       flex-shrink: 0;
+      object-fit: cover;
+      display: block;
     }
 
-    .profile-info h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-    }
+    .meta { font-size: 13px; color: var(--text-meta); font-family: var(--mono); margin: 0; }
 
-    .profile-info .handle {
-      color: #555;
-      font-size: 0.9rem;
-      margin-top: 0.2rem;
-      margin-bottom: 0.6rem;
-    }
+    .tagline { font-size: 17px; margin: 0; max-width: 32em; color: var(--text-body); }
 
-    .profile-info .bio {
-      font-size: 0.88rem;
-      color: #888;
-      line-height: 1.6;
-    }
+    section { margin-bottom: 3rem; }
+    section:last-of-type { margin-bottom: 0; }
 
-    /* ── Links row ── */
-    .links-row {
+    .head {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 3rem;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 8px;
     }
 
-    .link-chip {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #aaa;
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      padding: 0.3rem 0.7rem;
-      transition: all 0.2s;
-    }
+    .head .count { font-size: 11px; color: var(--text-faint); font-family: var(--mono); }
 
-    .link-chip:hover {
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #444;
-      margin-bottom: 1rem;
-    }
-
-    /* ── Experience ── */
-    .experience {
-      margin-bottom: 3rem;
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0 1rem;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .exp-item:last-child {
-      border-bottom: none;
-    }
-
-    .exp-org {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #e23636;
-      margin-bottom: 0.15rem;
-    }
-
-    .exp-org a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(226, 54, 54, 0.3);
-      transition: border-color 0.2s;
-    }
-
-    .exp-org a:hover {
-      border-color: #e23636;
-    }
-
-    .exp-role {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.4rem;
-    }
-
-    .exp-desc {
-      font-size: 0.84rem;
-      color: #777;
-      line-height: 1.6;
-    }
-
-    .exp-desc p + p {
-      margin-top: 0.35rem;
-    }
-
-    .exp-desc a {
-      color: #aaa;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .exp-desc a:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.4);
-    }
-
-    .exp-period {
-      font-size: 0.78rem;
-      color: #444;
-      white-space: nowrap;
-      padding-top: 0.1rem;
-    }
-
-    /* ── Projects ── */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .project-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 1.5rem;
+    .card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.125rem;
       text-decoration: none;
       color: inherit;
-      transition: all 0.25s ease;
       display: block;
+      transition: border-color 0.15s;
+    }
+    .card:hover { border-color: #3a3a3a; opacity: 1; }
+
+    .card .tag {
+      font-size: 10px;
+      color: var(--text-meta);
+      font-family: var(--mono);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .card .name { font-size: 16px; font-weight: 500; margin-bottom: 4px; color: var(--text); }
+    .card .desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    .now p { margin: 0 0 1rem; font-size: 15px; line-height: 1.65; }
+    .now p:last-child { margin-bottom: 0; }
+
+    .past, .articles { list-style: none; padding: 0; margin: 0; }
+    .past li {
+      display: flex;
+      gap: 1.5rem;
+      padding: 12px 0;
+      border-bottom: 0.5px solid var(--border-soft);
+      font-size: 14px;
+    }
+    .past li:last-child { border-bottom: none; }
+    .past .when {
+      font-family: var(--mono);
+      color: var(--text-meta);
+      font-size: 11px;
+      flex-shrink: 0;
+      width: 90px;
+      padding-top: 3px;
     }
 
-    .project-card:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(226, 54, 54, 0.35);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    .articles li {
+      padding: 14px 0;
+      border-bottom: 0.5px solid var(--border-soft);
     }
-
-    .project-card .icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-      display: block;
+    .articles li:last-child { border-bottom: none; }
+    .articles .row {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
     }
-
-    .project-card h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.4rem;
+    .articles .when {
+      font-family: var(--mono);
+      color: var(--text-meta);
+      font-size: 11px;
+      flex-shrink: 0;
+      width: 90px;
     }
-
-    .project-card p {
-      font-size: 0.84rem;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* ── Footer ── */
-    .footer {
-      font-size: 0.8rem;
-      color: #333;
-    }
-
-    .footer a {
-      color: #444;
+    .articles .title {
+      color: var(--text);
       text-decoration: none;
-      transition: color 0.2s;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.35;
+      display: block;
     }
-
-    .footer a:hover {
-      color: #888;
+    .articles .title:hover { text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 3px; }
+    .articles .sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      line-height: 1.5;
     }
+    .articles .src { font-family: var(--mono); font-size: 11px; color: var(--text-meta); }
 
-    @media (max-width: 768px) {
-      body {
-        padding: 2rem 1rem 3rem;
-      }
-
-      .profile {
-        gap: 1.2rem;
-      }
-
-      .projects {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
+    .contact a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .contact a:hover { border-color: #3a3a3a; opacity: 1; }
+    .contact .icon-label {
+      font-size: 11px;
+      color: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      min-width: 80px;
+    }
+    .contact .handle { color: var(--text); }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 1.5rem 1rem 2rem;
-      }
+    @media (max-width: 520px) {
+      .wrap { padding: 2.5rem 1.125rem 5rem; }
+      header { margin-bottom: 2.25rem; }
+      section { margin-bottom: 2.25rem; }
+      .id { gap: 0.875rem; margin-bottom: 1.125rem; }
+      .photo { width: 56px; height: 56px; }
+      h1 { font-size: 22px; }
+      .meta { font-size: 12px; }
+      .tagline { font-size: 15px; line-height: 1.5; }
+      h2 { font-size: 11px; }
+      .head { margin-bottom: 1rem; padding-bottom: 7px; }
 
-      .profile {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
+      .projects { grid-template-columns: 1fr; gap: 10px; }
+      .card { padding: 0.875rem 1rem; }
+      .card .name { font-size: 15px; }
 
-      .profile-photo {
-        width: 72px;
-        height: 72px;
-      }
+      .now p { font-size: 14px; line-height: 1.6; margin-bottom: 0.75rem; }
 
-      .projects {
-        grid-template-columns: 1fr;
-      }
+      .past li { flex-direction: column; gap: 0.25rem; padding: 10px 0; font-size: 13px; }
+      .past .when { width: auto; padding-top: 0; }
 
-      .exp-desc {
-        font-size: 0.82rem;
-      }
+      .articles li { padding: 12px 0; }
+      .articles .row { flex-direction: column; gap: 5px; }
+      .articles .when { width: auto; font-size: 11px; }
+      .articles .title { font-size: 14px; }
+      .articles .sub { font-size: 12px; }
+
+      .contact a { padding: 12px 14px; font-size: 13px; }
+      .contact .icon-label { min-width: 70px; font-size: 10px; }
     }
   </style>
 </head>
 <body>
-<div class="page">
+  <main class="wrap">
 
-  <div class="profile">
-    <img src="/about/photo.jpg" alt="Zhura" class="profile-photo">
-    <div class="profile-info">
-      <h1>Владимир Журавлев</h1>
-      <div class="handle">aka Zhura · Serbia, Belgrade</div>
-      <div class="bio">Jack of all trades. Айтишник, разработчик бота для moloko.plus, книгоиздатель, автор статей про игры, телеграм-канал про всё это.</div>
-    </div>
-  </div>
-
-  <div class="links-row">
-    <a href="https://t.me/zhuralol" class="link-chip" rel="me">Telegram</a>
-    <a href="https://t.me/ru_sjw" class="link-chip" rel="me">Русский SJW</a>
-    <a href="https://github.com/zhuralol" class="link-chip" rel="me">GitHub</a>
-    <a href="https://twitter.com/zhuralol" class="link-chip" rel="me">Twitter</a>
-    <a href="https://t.me/directio_libera" class="link-chip">directio libera</a>
-    <a href="https://moloko.plus" class="link-chip">moloko plus</a>
-  </div>
-
-  <div class="section-label">Опыт</div>
-  <div class="experience">
-
-    <div class="exp-item">
-      <div>
-        <div class="exp-org"><a href="https://t.me/ruleft_serbia" style="color:inherit;text-decoration:none;">Сербский Левый Клуб</a></div>
-        <div class="exp-role">делаю всякое</div>
-        <div class="exp-desc"><p>👀</p></div>
-      </div>
-      <div class="exp-period">с июля 2024</div>
-    </div>
-
-    <div class="exp-item">
-      <div>
-        <div class="exp-org"><a href="https://moloko.plus">moloko plus</a></div>
-        <div class="exp-role">Разработчик, иногда соавтор текстов</div>
-        <div class="exp-desc">
-          <p>Телеграм-бот на Python для интеграции заказов из тильды, API Почты России и принтера этикеток. Сэкономил сотни человеко-часов.</p>
-          <p>Стек: Python, AIOgram, pochta.ru, dadata</p>
-          <p><a href="https://moloko.plus/almanac">«Государство»</a>: соавтор «Правил жизни Мао Цзедуна» и <a href="https://vatnikstan.ru/history/tanki-v-stolicze/">текста про события 1993 года</a></p>
-          <p><a href="https://moloko.plus/podcast">Подкаст «Руки за голову»</a>: project manager</p>
+    <header>
+      <div class="id">
+        <img class="photo" src="/about/photo.jpg" alt="Владимир Журавлёв" loading="eager">
+        <div style="flex:1; padding-top:4px; min-width:0;">
+          <h1>Владимир Журавлёв</h1>
+          <p class="meta">Zhura · Белград</p>
         </div>
       </div>
-      <div class="exp-period">с 2022</div>
-    </div>
+      <p class="tagline">Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.</p>
+    </header>
 
-    <div class="exp-item">
-      <div>
-        <div class="exp-org"><a href="https://directiolibera.org">издательство directio libera</a></div>
-        <div class="exp-role">Сооснователь, редактор</div>
-        <div class="exp-desc">
-          <p>Издал книгу <a href="https://t.me/alnapisal">Алексея Жабина</a> <a href="https://moloko.plus/books/tproduct/565075711-861611652981-konets-svobodnoi-epohi-litsa-bolotnoi">«Конец свободной эпохи. Лица Болотной»</a> — о людях, которых изменили события 6 мая 2012 года.</p>
-          <p>Издатель: <a href="https://directiolibera.com/tproduct/132777032531-novii-sibirskii-poryadok-letnii-tur-2022">Новый сибирский порядок. Летний тур 2022 года глазами участников и очевидцев</a></p>
-          <p>Издатель и составитель: <a href="https://directiolibera.com/trotsky">Изнанка победы: Балканы и балканская война</a></p>
-          <p>Издатель: <a href="https://directiolibera.com/tproduct/858458945321-kratkaya-sistema-anarhizma-v-desyati-bes">Краткая система анархизма в десяти беседах</a></p>
-          <p>Издатель, предисловие: <a href="https://directiolibera.com/tproduct/848059397251-industrialnoe-obschestvo-i-ego-buduschee">Индустриальное общество и его будущее, а также другие тексты</a></p>
-          <p>И другие книги</p>
-        </div>
+    <section>
+      <div class="head">
+        <h2>Проекты</h2>
+
       </div>
-      <div class="exp-period">с 2021</div>
-    </div>
+      <div class="projects">
 
-    <div class="exp-item">
-      <div>
-        <div class="exp-org"><a href="https://napilnik.store/">Издательский кооператив «Напильник»</a></div>
-        <div class="exp-role">Сооснователь, редактор</div>
-        <div class="exp-desc">
-          <p>Издал первое в современной России отдельное издание <a href="https://moloko.plus/books/tproduct/565075711-848986427371-katehizis-revolyutsionera">«Катехизиса революционера»</a> Нечаева.</p>
-          <p>Наладил выпуск самиздатовских брошюр на бюджет 10К ₽.</p>
-        </div>
+        <a class="card" href="/lenin/">
+          <div class="tag">веб · 2024</div>
+          <div class="name">Случайный Ленин</div>
+          <div class="desc">Случайная цитата или статья В.И. Ленина.</div>
+        </a>
+
+        <a class="card" href="/leftmap/">
+          <div class="tag">карта · 2024</div>
+          <div class="name">Карта левых сообществ</div>
+          <div class="desc">Эмигрантские левые сообщества по городам и странам.</div>
+        </a>
+
+        <a class="card" href="https://directiolibera.org">
+          <div class="tag">издательство · с 2021</div>
+          <div class="name">directio libera</div>
+          <div class="desc">Сооснователь, редактор, составитель.</div>
+        </a>
+
+        <a class="card" href="https://moloko.plus">
+          <div class="tag">бот + тексты · с 2022</div>
+          <div class="name">moloko plus</div>
+          <div class="desc">Логистика, Python-бот для заказов, иногда тексты для альманахов.</div>
+        </a>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="head">
+        <h2>Сейчас</h2>
+        <span class="count">2026</span>
+      </div>
+      <div class="now">
+        <p>Занимаюсь <a href="https://t.me/ruleft_serbia">Сербским Левым Клубом</a> — эмигрантским левым сообществом.</p>
+        <p>Пишу в канал <a href="https://t.me/ru_sjw">Русский SJW</a>.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="head">
+        <h2>Раньше</h2>
+      </div>
+      <ul class="past">
+        <li>
+          <span class="when">2020 – 2021</span>
+          <span><a href="https://napilnik.store">Издательский кооператив «Напильник»</a> — сооснователь.</span>
+        </li>
+        <li>
+          <span class="when">2022 - 2023</span>
+          <span>Подкаст <a href="https://moloko.plus/podcast">«Руки за голову»</a> — project manager.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="head">
+        <h2>Статьи</h2>
+        <span class="count">03</span>
+      </div>
+      <ul class="articles">
+        <li>
+          <div class="row">
+            <span class="when">06 · 2023</span>
+            <div style="flex:1;">
+              <a class="title" href="https://novayagazeta.eu/articles/2023/06/11/ubegi-ot-eshnika-ili-sam-im-stan">Убеги от эшника. Или сам им стань</a>
+              <div class="sub">Пять российских newsgames — от шуточных до ужасающих. <span class="src">Новая газета Европа</span></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <span class="when">05 · 2023</span>
+            <div style="flex:1;">
+              <a class="title" href="https://novayagazeta.eu/articles/2023/05/28/pikselnoe-soprotivlenie">Пиксельное сопротивление</a>
+              <div class="sub">Топ-5 видеоигр о борьбе с диктаторами. <span class="src">Новая газета Европа</span></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <span class="when">2022</span>
+            <div style="flex:1;">
+              <a class="title" href="https://vatnikstan.ru/history/tanki-v-stolicze/">Танки в столице</a>
+              <div class="sub">События октября 1993 года. <span class="src">Vatnikstan</span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="head">
+        <h2>Связь</h2>
+      </div>
+      <div class="contact">
+        <a href="https://t.me/zhuralol">
+          <span class="icon-label">telegram</span>
+          <span class="handle">@zhuralol</span>
+        </a>
+        <a href="mailto:zhura@zhura.lol">
+          <span class="icon-label">email</span>
+          <span class="handle">zhura@zhura.lol</span>
+        </a>
+        <a href="https://github.com/zhuralol">
+          <span class="icon-label">github</span>
+          <span class="handle">zhuralol</span>
+        </a>
+        <a href="https://twitter.com/zhuralol">
+          <span class="icon-label">twitter</span>
+          <span class="handle">@zhuralol</span>
+        </a>
+        <a href="https://instagram.com/zhuralol">
+          <span class="icon-label">instagram</span>
+          <span class="handle">@zhuralol</span>
+        </a>
       </div>
       <div class="exp-period">2020–2021</div>
     </div>
