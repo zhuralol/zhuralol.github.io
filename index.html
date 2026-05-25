@@ -83,6 +83,7 @@
     .meta { font-size: 13px; color: var(--text-meta); font-family: var(--mono); margin: 0; }
 
     .tagline { font-size: 17px; margin: 0; max-width: 32em; color: var(--text-body); }
+    .kofi-wrap { margin-top: 1.25rem; }
 
     section { margin-bottom: 3rem; }
     section:last-of-type { margin-bottom: 0; }
@@ -255,6 +256,7 @@
         </div>
       </div>
       <p class="tagline">Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.</p>
+      <div class="kofi-wrap"></div>
     </header>
 
     <section>
@@ -380,30 +382,14 @@
           <span class="handle">@zhuralol</span>
         </a>
       </div>
-      <div class="exp-period">2020–2021</div>
-    </div>
+    </section>
 
-  </div>
+  </main>
 
-  <div class="section-label">Проекты</div>
-  <div class="projects">
-    <a href="/lenin/" class="project-card">
-      <span class="icon">📜</span>
-      <h2>Случайный Ленин</h2>
-      <p>Случайные цитаты и статьи В.И. Ленина. Нажми кнопку — получи ссылку на произведение.</p>
-    </a>
-
-    <a href="/leftmap/" class="project-card">
-      <span class="icon">🗺️</span>
-      <h2>Карта левых сообществ</h2>
-      <p>Карта левых эмигрантских сообществ. Найди единомышленников в своём городе.</p>
-    </a>
-  </div>
-
-  <div class="footer">
-    email: zhura at zhura.lol
-  </div>
-
-</div>
+  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+  <script type='text/javascript'>
+    kofiwidget2.init('Support me on Ko-fi', '#34a192', 'S6S0TU6ZK');
+    document.querySelector('.kofi-wrap').innerHTML = kofiwidget2.getHTML();
+  </script>
 </body>
 </html>
