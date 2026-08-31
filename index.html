@@ -20,17 +20,30 @@
 
   <style>
     :root {
-      --bg: #0e0e0e;
-      --surface: #161616;
-      --border: #2a2a2a;
-      --border-soft: #1f1f1f;
-      --text: #f0ede4;
-      --text-body: #d4d0c5;
-      --text-muted: #a8a394;
-      --text-meta: #8a857a;
-      --text-faint: #555;
+      --bg: #FBF3E9;
+      --surface: #F5E7D3;
+      --border: #E5D2B0;
+      --border-soft: #EFE1C8;
+      --text: #241A10;
+      --text-body: #4A3627;
+      --text-muted: #5C4A38;
+      --text-meta: #7A6650;
+      --text-faint: #B29A78;
       --serif: 'Source Serif 4', Georgia, serif;
       --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --orange: #FF9100;
+      --coral: #EA5455;
+      --tangerine: #F07B3F;
+      --gold: #FFD460;
+
+      --orange-ink: #A85B00;
+      --coral-ink: #C23334;
+      --tangerine-ink: #A8481A;
+      --gold-ink: #8A6400;
+
+      --link: var(--coral-ink);
+      --link-hover: #9E2223;
     }
 
     * { box-sizing: border-box; }
@@ -54,36 +67,51 @@
       padding: 3.5rem 1.5rem 6rem;
     }
 
-    a { color: var(--text); text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 3px; transition: opacity 0.15s; }
-    a:hover { opacity: 0.7; }
+    a { color: var(--link); text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 3px; transition: color 0.15s, opacity 0.15s; }
+    a:hover { color: var(--link-hover); opacity: 1; }
 
-    h1 { font-size: 28px; font-weight: 500; margin: 0 0 5px; letter-spacing: -0.01em; color: var(--text); line-height: 1.2; }
-    h2 { font-size: 12px; font-weight: 500; margin: 0; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-meta); font-family: var(--mono); }
+    h1 {
+      font-size: 28px; font-weight: 500; margin: 0 0 12px; letter-spacing: -0.01em; color: var(--text); line-height: 1.2;
+      position: relative; display: inline-block; padding-bottom: 9px;
+    }
+    h1::after {
+      content: ''; position: absolute; left: 0; bottom: 0; width: 64px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+    }
+    h2 { font-size: 12px; font-weight: 500; margin: 0; text-transform: uppercase; letter-spacing: 0.12em; color: var(--section-color, var(--text-meta)); font-family: var(--mono); }
+
+    section:nth-of-type(1) { --section-color: var(--orange-ink); }
+    section:nth-of-type(2) { --section-color: var(--coral-ink); }
+    section:nth-of-type(3) { --section-color: var(--tangerine-ink); }
+    section:nth-of-type(4) { --section-color: var(--gold-ink); }
+    section:nth-of-type(5) { --section-color: var(--orange-ink); }
 
     header { margin-bottom: 3rem; }
 
     .id {
       display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
+      gap: 1.5rem;
+      align-items: center;
       margin-bottom: 1.5rem;
     }
 
     .photo {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
       background: var(--surface);
-      border: 0.5px solid var(--border);
       flex-shrink: 0;
       object-fit: cover;
       display: block;
+      border: 3px solid transparent;
+      background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(135deg, var(--orange), var(--coral), var(--gold));
+      background-origin: border-box;
+      background-clip: content-box, border-box;
     }
 
     .meta { font-size: 13px; color: var(--text-meta); font-family: var(--mono); margin: 0; }
 
     .tagline { font-size: 17px; margin: 0; max-width: 32em; color: var(--text-body); }
-    .kofi-wrap { margin-top: 1.25rem; }
 
     section { margin-bottom: 3rem; }
     section:last-of-type { margin-bottom: 0; }
@@ -93,7 +121,7 @@
       align-items: baseline;
       justify-content: space-between;
       margin-bottom: 1.25rem;
-      border-bottom: 0.5px solid var(--border);
+      border-bottom: 1px solid color-mix(in srgb, var(--section-color, var(--border)) 45%, var(--border));
       padding-bottom: 8px;
     }
 
@@ -108,18 +136,28 @@
     .card {
       background: var(--surface);
       border: 0.5px solid var(--border);
+      border-top: 2.5px solid var(--card-color, var(--border));
       border-radius: 12px;
       padding: 1rem 1.125rem;
       text-decoration: none;
       color: inherit;
       display: block;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, box-shadow 0.2s, transform 0.15s;
     }
-    .card:hover { border-color: #3a3a3a; opacity: 1; }
+    .card:nth-child(4n+1) { --card-color: var(--orange); --card-ink: var(--orange-ink); }
+    .card:nth-child(4n+2) { --card-color: var(--coral); --card-ink: var(--coral-ink); }
+    .card:nth-child(4n+3) { --card-color: var(--tangerine); --card-ink: var(--tangerine-ink); }
+    .card:nth-child(4n+4) { --card-color: var(--gold); --card-ink: var(--gold-ink); }
+    .card:hover {
+      border-color: var(--card-color);
+      box-shadow: 0 0 0 1px var(--card-color), 0 10px 22px -10px color-mix(in srgb, var(--card-color) 60%, transparent);
+      transform: translateY(-1px);
+      opacity: 1;
+    }
 
     .card .tag {
       font-size: 10px;
-      color: var(--text-meta);
+      color: var(--card-ink, var(--text-meta));
       font-family: var(--mono);
       margin-bottom: 8px;
       text-transform: uppercase;
@@ -194,18 +232,24 @@
       gap: 12px;
       background: var(--surface);
       border: 0.5px solid var(--border);
+      border-left: 2.5px solid var(--card-color, var(--border));
       border-radius: 10px;
       padding: 14px 18px;
       font-family: var(--mono);
       font-size: 14px;
       color: var(--text);
       text-decoration: none;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, box-shadow 0.2s;
     }
-    .contact a:hover { border-color: #3a3a3a; opacity: 1; }
+    .contact a:nth-child(5n+1) { --card-color: var(--orange); --card-ink: var(--orange-ink); }
+    .contact a:nth-child(5n+2) { --card-color: var(--coral); --card-ink: var(--coral-ink); }
+    .contact a:nth-child(5n+3) { --card-color: var(--tangerine); --card-ink: var(--tangerine-ink); }
+    .contact a:nth-child(5n+4) { --card-color: var(--gold); --card-ink: var(--gold-ink); }
+    .contact a:nth-child(5n+5) { --card-color: var(--orange); --card-ink: var(--orange-ink); }
+    .contact a:hover { border-color: var(--card-color); box-shadow: 0 0 0 1px var(--card-color); opacity: 1; }
     .contact .icon-label {
       font-size: 11px;
-      color: var(--text-meta);
+      color: var(--card-ink, var(--text-meta));
       text-transform: uppercase;
       letter-spacing: 0.08em;
       min-width: 80px;
@@ -217,7 +261,7 @@
       header { margin-bottom: 2.25rem; }
       section { margin-bottom: 2.25rem; }
       .id { gap: 0.875rem; margin-bottom: 1.125rem; }
-      .photo { width: 56px; height: 56px; }
+      .photo { width: 84px; height: 84px; border-radius: 18px; }
       h1 { font-size: 22px; }
       .meta { font-size: 12px; }
       .tagline { font-size: 15px; line-height: 1.5; }
@@ -250,13 +294,12 @@
     <header>
       <div class="id">
         <img class="photo" src="/about/photo.jpg" alt="Владимир Журавлёв" loading="eager">
-        <div style="flex:1; padding-top:4px; min-width:0;">
+        <div style="flex:1; min-width:0;">
           <h1>Владимир Журавлёв</h1>
-          <p class="meta">Zhura · Белград</p>
+          <p class="meta">aka Жура / Zhura · Белград</p>
         </div>
       </div>
       <p class="tagline">Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.</p>
-      <div class="kofi-wrap"></div>
     </header>
 
     <section>
@@ -284,10 +327,10 @@
           <div class="desc">Сооснователь, редактор, составитель.</div>
         </a>
 
-        <a class="card" href="https://moloko.plus">
-          <div class="tag">бот + тексты · с 2022</div>
-          <div class="name">moloko plus</div>
-          <div class="desc">Логистика, Python-бот для заказов, иногда тексты для альманахов.</div>
+        <a class="card" href="#">
+          <div class="tag">соц. центр · с 2026</div>
+          <div class="name">DC Loža</div>
+          <div class="desc">Социальный центр русскоязычных эмигрантов.</div>
         </a>
 
       </div>
@@ -316,6 +359,10 @@
         <li>
           <span class="when">2022 - 2023</span>
           <span>Подкаст <a href="https://moloko.plus/podcast">«Руки за голову»</a> — project manager.</span>
+        </li>
+        <li>
+          <span class="when">2022 – 2026</span>
+          <span><a href="https://moloko.plus">moloko plus</a> — Python-бот для заказов, логистика, иногда тексты для альманахов.</span>
         </li>
       </ul>
     </section>
@@ -386,10 +433,5 @@
 
   </main>
 
-  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-  <script type='text/javascript'>
-    kofiwidget2.init('Support me on Ko-fi', '#34a192', 'S6S0TU6ZK');
-    document.querySelector('.kofi-wrap').innerHTML = kofiwidget2.getHTML();
-  </script>
 </body>
 </html>
