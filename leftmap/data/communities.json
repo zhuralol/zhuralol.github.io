@@ -85,5 +85,75 @@
 	  {"type": "telegram", "url": "https://t.me/postsovietleft" },
       { "type": "instagram", "url": "https://instagram.com/postsovietleft" }
     ]
+  },
+  {
+    "id": 7,
+    "name": "Русскоязычные Левые – Берлин",
+    "description": "Русскоязычные левые активист_ки, организовавшиеся внутри и вокруг партии Die Linke",
+    "country": "Германия",
+    "city": "Берлин",
+    "lat": 52.5163,
+    "lng": 13.3777,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
+      { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Русскоязычные Левые – Мюнхен",
+    "description": "Русскоязычные левые активист_ки, организовавшиеся внутри и вокруг партии Die Linke",
+    "country": "Германия",
+    "city": "Мюнхен",
+    "lat": 48.1351,
+    "lng": 11.5820,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
+      { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Русскоязычные Левые – Дрезден",
+    "description": "Русскоязычные левые активист_ки, организовавшиеся внутри и вокруг партии Die Linke",
+    "country": "Германия",
+    "city": "Дрезден",
+    "lat": 51.0504,
+    "lng": 13.7373,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
+      { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Русскоязычные Левые – Эссен",
+    "description": "Русскоязычные левые активист_ки, организовавшиеся внутри и вокруг партии Die Linke",
+    "country": "Германия",
+    "city": "Эссен",
+    "lat": 51.4556,
+    "lng": 7.0116,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
+      { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Русскоязычные Левые – Бонн",
+    "description": "Русскоязычные левые активист_ки, организовавшиеся внутри и вокруг партии Die Linke",
+    "country": "Германия",
+    "city": "Бонн",
+    "lat": 50.7374,
+    "lng": 7.0982,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
+      { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
   }
 ]
