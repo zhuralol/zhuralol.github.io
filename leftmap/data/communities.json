@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Левый Клуб Сербии",
+    "name": "Левый Клуб Сербии – Белград",
     "description": "Сообщество русскоязычных левых в Сербии. Регулярные встречи, дискуссии, взаимопомощь.",
     "country": "Сербия",
     "city": "Белград",
@@ -154,6 +154,20 @@
     "links": [
       { "type": "telegram", "url": "https://t.me/RussischsprachigeLinke/2" },
       { "type": "instagram", "url": "https://www.instagram.com/russischsprachigelinke/" }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Левый Клуб Сербии – Нови-Сад",
+    "description": "Сообщество русскоязычных левых в Сербии. Регулярные встречи, дискуссии, взаимопомощь.",
+    "country": "Сербия",
+    "city": "Нови-Сад",
+    "lat": 45.2671,
+    "lng": 19.8335,
+    "logo": "logos/default.png",
+    "links": [
+      { "type": "telegram", "url": "https://t.me/ruleft_serbia" },
+      { "type": "instagram", "url": "https://instagram.com/ruleft_serbia/" }
     ]
   }
 ]
