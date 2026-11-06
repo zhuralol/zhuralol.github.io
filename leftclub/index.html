@@ -286,14 +286,14 @@
         document.querySelectorAll('.lang button').forEach(function (b) {
           b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
         });
-        try { localStorage.setItem('leftclub-lang', lang); } catch (e) {}
+        try { localStorage.setItem('zhura-lang', lang); } catch (e) {}
       }
 
       // Priority: ?lang= in the URL, then the saved choice, then the browser language. Default is Russian.
       var initial = 'ru';
       try {
         var q = new URLSearchParams(location.search).get('lang');
-        var saved = localStorage.getItem('leftclub-lang');
+        var saved = localStorage.getItem('zhura-lang');
         var nav = (navigator.language || '').slice(0, 2).toLowerCase();
         if (q === 'srb') q = 'sr';
         if (T[q]) initial = q;

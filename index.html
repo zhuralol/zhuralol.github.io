@@ -256,7 +256,37 @@
     }
     .contact .handle { color: var(--text); }
 
+    .lang {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2px;
+      margin: -1.5rem 0 1.5rem;
+    }
+    .lang button {
+      appearance: none;
+      border: 0.5px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      min-width: 44px;
+      min-height: 32px;
+      padding: 0 10px;
+      font: 500 11px/1 var(--mono);
+      letter-spacing: 0.1em;
+      color: var(--text-meta);
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .lang button:hover { color: var(--text); }
+    .lang button[aria-pressed="true"] {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--orange-ink);
+    }
+    .lang button:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
     @media (max-width: 520px) {
+      .lang { margin: -1rem 0 1rem; }
       .wrap { padding: 2.5rem 1.125rem 5rem; }
       header { margin-bottom: 2.25rem; }
       section { margin-bottom: 2.25rem; }
@@ -291,46 +321,52 @@
 <body>
   <main class="wrap">
 
+    <div class="lang" role="group" aria-label="Язык / Language / Jezik">
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="sr" aria-pressed="false">SRB</button>
+    </div>
+
     <header>
       <div class="id">
-        <img class="photo" src="/about/photo.jpg" alt="Владимир Журавлёв" loading="eager">
+        <img class="photo" src="/about/photo.jpg" alt="Владимир Журавлёв" data-i18n-alt="name" loading="eager">
         <div style="flex:1; min-width:0;">
-          <h1>Владимир Журавлёв</h1>
-          <p class="meta">aka Жура / Zhura · Белград</p>
+          <h1 data-i18n="name">Владимир Журавлёв</h1>
+          <p class="meta" data-i18n="meta">aka Жура / Zhura · Белград</p>
         </div>
       </div>
-      <p class="tagline">Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.</p>
+      <p class="tagline" data-i18n="tagline">Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.</p>
     </header>
 
     <section>
       <div class="head">
-        <h2>Проекты</h2>
+        <h2 data-i18n="h_projects">Проекты</h2>
 
       </div>
       <div class="projects">
 
         <a class="card" href="/lenin/">
-          <div class="tag">веб · 2024</div>
-          <div class="name">Случайный Ленин</div>
-          <div class="desc">Случайная цитата или статья В.И. Ленина.</div>
+          <div class="tag" data-i18n="lenin_tag">веб · 2024</div>
+          <div class="name" data-i18n="lenin_name">Случайный Ленин</div>
+          <div class="desc" data-i18n="lenin_desc">Случайная цитата или статья В.И. Ленина.</div>
         </a>
 
         <a class="card" href="/leftmap/">
-          <div class="tag">карта · 2024</div>
-          <div class="name">Карта левых сообществ</div>
-          <div class="desc">Эмигрантские левые сообщества по городам и странам.</div>
+          <div class="tag" data-i18n="map_tag">карта · 2024</div>
+          <div class="name" data-i18n="map_name">Карта левых сообществ</div>
+          <div class="desc" data-i18n="map_desc">Эмигрантские левые сообщества по городам и странам.</div>
         </a>
 
         <a class="card" href="https://directiolibera.org">
-          <div class="tag">издательство · с 2021</div>
+          <div class="tag" data-i18n="dl_tag">издательство · с 2021</div>
           <div class="name">directio libera</div>
-          <div class="desc">Сооснователь, редактор, составитель.</div>
+          <div class="desc" data-i18n="dl_desc">Сооснователь, редактор, составитель.</div>
         </a>
 
         <a class="card" href="/dcloza/">
-          <div class="tag">соц. центр · с 2026</div>
+          <div class="tag" data-i18n="loza_tag">соц. центр · с 2026</div>
           <div class="name">DC Loža</div>
-          <div class="desc">Социальный центр русскоязычных эмигрантов.</div>
+          <div class="desc" data-i18n="loza_desc">Социальный центр русскоязычных эмигрантов.</div>
         </a>
 
       </div>
@@ -338,38 +374,38 @@
 
     <section>
       <div class="head">
-        <h2>Сейчас</h2>
+        <h2 data-i18n="h_now">Сейчас</h2>
         <span class="count">2026</span>
       </div>
       <div class="now">
-        <p>Занимаюсь <a href="/leftclub/">Сербским Левым Клубом</a> — эмигрантским левым сообществом.</p>
-        <p>Пишу в канал <a href="https://t.me/ru_sjw">Русский SJW</a>.</p>
+        <p data-i18n="now1">Занимаюсь <a href="/leftclub/">Сербским Левым Клубом</a> — эмигрантским левым сообществом.</p>
+        <p data-i18n="now2">Пишу в канал <a href="https://t.me/ru_sjw">Русский SJW</a>.</p>
       </div>
     </section>
 
     <section>
       <div class="head">
-        <h2>Раньше</h2>
+        <h2 data-i18n="h_past">Раньше</h2>
       </div>
       <ul class="past">
         <li>
           <span class="when">2020 – 2021</span>
-          <span><a href="https://napilnik.store">Издательский кооператив «Напильник»</a> — сооснователь.</span>
+          <span data-i18n="past1"><a href="https://napilnik.store">Издательский кооператив «Напильник»</a> — сооснователь.</span>
         </li>
         <li>
-          <span class="when">2022 - 2023</span>
-          <span>Подкаст <a href="https://moloko.plus/podcast">«Руки за голову»</a> — project manager.</span>
+          <span class="when">2022 – 2023</span>
+          <span data-i18n="past2">Подкаст <a href="https://moloko.plus/podcast">«Руки за голову»</a> — project manager.</span>
         </li>
         <li>
           <span class="when">2022 – 2026</span>
-          <span><a href="https://moloko.plus">moloko plus</a> — Python-бот для заказов, логистика, иногда тексты для альманахов.</span>
+          <span data-i18n="past3"><a href="https://moloko.plus">moloko plus</a> — Python-бот для заказов, логистика, иногда тексты для альманахов.</span>
         </li>
       </ul>
     </section>
 
     <section>
       <div class="head">
-        <h2>Статьи</h2>
+        <h2 data-i18n="h_articles">Статьи</h2>
         <span class="count">03</span>
       </div>
       <ul class="articles">
@@ -378,7 +414,7 @@
             <span class="when">06 · 2023</span>
             <div style="flex:1;">
               <a class="title" href="https://novayagazeta.eu/articles/2023/06/11/ubegi-ot-eshnika-ili-sam-im-stan">Убеги от эшника. Или сам им стань</a>
-              <div class="sub">Пять российских newsgames — от шуточных до ужасающих. <span class="src">Новая газета Европа</span></div>
+              <div class="sub" data-i18n="art1">Пять российских newsgames — от шуточных до ужасающих. <span class="src">Новая газета Европа</span></div>
             </div>
           </div>
         </li>
@@ -387,7 +423,7 @@
             <span class="when">05 · 2023</span>
             <div style="flex:1;">
               <a class="title" href="https://novayagazeta.eu/articles/2023/05/28/pikselnoe-soprotivlenie">Пиксельное сопротивление</a>
-              <div class="sub">Топ-5 видеоигр о борьбе с диктаторами. <span class="src">Новая газета Европа</span></div>
+              <div class="sub" data-i18n="art2">Топ-5 видеоигр о борьбе с диктаторами. <span class="src">Новая газета Европа</span></div>
             </div>
           </div>
         </li>
@@ -396,7 +432,7 @@
             <span class="when">2022</span>
             <div style="flex:1;">
               <a class="title" href="https://vatnikstan.ru/history/tanki-v-stolicze/">Танки в столице</a>
-              <div class="sub">События октября 1993 года. <span class="src">Vatnikstan</span></div>
+              <div class="sub" data-i18n="art3">События октября 1993 года. <span class="src">Vatnikstan</span></div>
             </div>
           </div>
         </li>
@@ -405,7 +441,7 @@
 
     <section>
       <div class="head">
-        <h2>Связь</h2>
+        <h2 data-i18n="h_contact">Связь</h2>
       </div>
       <div class="contact">
         <a href="https://t.me/zhuralol">
@@ -432,6 +468,112 @@
     </section>
 
   </main>
+
+  <script>
+    (function () {
+      var NG = { ru: 'Новая газета Европа', en: 'Novaya Gazeta Europe', sr: 'Novaja gazeta Evropa' };
+      var T = {
+        ru: {
+          title: 'Владимир Журавлёв · zhura.lol',
+          name: 'Владимир Журавлёв',
+          meta: 'aka Жура / Zhura · Белград',
+          tagline: 'Издаю книги, занимаюсь Information Security, делаю левые и около-левые проекты.',
+          h_projects: 'Проекты', h_now: 'Сейчас', h_past: 'Раньше', h_articles: 'Статьи', h_contact: 'Связь',
+          lenin_tag: 'веб · 2024', lenin_name: 'Случайный Ленин', lenin_desc: 'Случайная цитата или статья В.И. Ленина.',
+          map_tag: 'карта · 2024', map_name: 'Карта левых сообществ', map_desc: 'Эмигрантские левые сообщества по городам и странам.',
+          dl_tag: 'издательство · с 2021', dl_desc: 'Сооснователь, редактор, составитель.',
+          loza_tag: 'соц. центр · с 2026', loza_desc: 'Социальный центр русскоязычных эмигрантов.',
+          now1: 'Занимаюсь <a href="/leftclub/">Сербским Левым Клубом</a> — эмигрантским левым сообществом.',
+          now2: 'Пишу в канал <a href="https://t.me/ru_sjw">Русский SJW</a>.',
+          past1: '<a href="https://napilnik.store">Издательский кооператив «Напильник»</a> — сооснователь.',
+          past2: 'Подкаст <a href="https://moloko.plus/podcast">«Руки за голову»</a> — project manager.',
+          past3: '<a href="https://moloko.plus">moloko plus</a> — Python-бот для заказов, логистика, иногда тексты для альманахов.',
+          art1: 'Пять российских newsgames — от шуточных до ужасающих.',
+          art2: 'Топ-5 видеоигр о борьбе с диктаторами.',
+          art3: 'События октября 1993 года.'
+        },
+        en: {
+          title: 'Vladimir Zhuravlev · zhura.lol',
+          name: 'Vladimir Zhuravlev',
+          meta: 'aka Zhura · Belgrade',
+          tagline: 'I publish books, work in information security, and make leftist and left-adjacent projects.',
+          h_projects: 'Projects', h_now: 'Now', h_past: 'Previously', h_articles: 'Articles', h_contact: 'Contact',
+          lenin_tag: 'web · 2024', lenin_name: 'Random Lenin', lenin_desc: 'A random quote or article by V.I. Lenin.',
+          map_tag: 'map · 2024', map_name: 'Map of Left Communities', map_desc: 'Émigré left communities by city and country.',
+          dl_tag: 'publisher · since 2021', dl_desc: 'Co-founder, editor, compiler.',
+          loza_tag: 'social center · since 2026', loza_desc: 'A social center for Russian-speaking émigrés.',
+          now1: 'I work on the <a href="/leftclub/">Left Club of Serbia</a>, an émigré left community.',
+          now2: 'I write for the <a href="https://t.me/ru_sjw">Русский SJW</a> channel.',
+          past1: '<a href="https://napilnik.store">Napilnik publishing cooperative</a> — co-founder.',
+          past2: '<a href="https://moloko.plus/podcast">“Ruki za golovu”</a> podcast — project manager.',
+          past3: '<a href="https://moloko.plus">moloko plus</a> — Python ordering bot, logistics, occasional texts for the almanacs.',
+          art1: 'Five Russian newsgames, from jokey to horrifying.',
+          art2: 'Top 5 video games about fighting dictators.',
+          art3: 'The events of October 1993.'
+        },
+        sr: {
+          title: 'Vladimir Žuravljov · zhura.lol',
+          name: 'Vladimir Žuravljov',
+          meta: 'aka Žura / Zhura · Beograd',
+          tagline: 'Izdajem knjige, bavim se informacionom bezbednošću, pravim leve i levo orijentisane projekte.',
+          h_projects: 'Projekti', h_now: 'Sada', h_past: 'Ranije', h_articles: 'Članci', h_contact: 'Kontakt',
+          lenin_tag: 'veb · 2024', lenin_name: 'Nasumični Lenjin', lenin_desc: 'Nasumični citat ili članak V. I. Lenjina.',
+          map_tag: 'mapa · 2024', map_name: 'Mapa levih zajednica', map_desc: 'Emigrantske leve zajednice po gradovima i zemljama.',
+          dl_tag: 'izdavač · od 2021', dl_desc: 'Suosnivač, urednik, priređivač.',
+          loza_tag: 'društveni centar · od 2026', loza_desc: 'Društveni centar rusofonih emigranata.',
+          now1: 'Bavim se <a href="/leftclub/">Levim Klubom Srbije</a> — emigrantskom levom zajednicom.',
+          now2: 'Pišem za kanal <a href="https://t.me/ru_sjw">Русский SJW</a>.',
+          past1: '<a href="https://napilnik.store">Izdavačka zadruga „Napiljnik“</a> — suosnivač.',
+          past2: 'Podkast <a href="https://moloko.plus/podcast">„Ruki za golovu“</a> — projekt menadžer.',
+          past3: '<a href="https://moloko.plus">moloko plus</a> — Python bot za porudžbine, logistika, povremeno tekstovi za almanahe.',
+          art1: 'Pet ruskih newsgames igara — od šaljivih do zastrašujućih.',
+          art2: 'Top 5 video igara o borbi protiv diktatora.',
+          art3: 'Događaji iz oktobra 1993.'
+        }
+      };
+
+      // Article descriptions keep their source label after the text.
+      var SRC = { art1: NG, art2: NG, art3: { ru: 'Vatnikstan', en: 'Vatnikstan', sr: 'Vatnikstan' } };
+
+      function setLang(lang) {
+        var t = T[lang];
+        if (!t) return;
+        document.documentElement.lang = lang;
+        document.title = t.title;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          var html = t[key];
+          if (SRC[key]) html += ' <span class="src">' + SRC[key][lang] + '</span>';
+          el.innerHTML = html;
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+          el.alt = t[el.getAttribute('data-i18n-alt')];
+        });
+        document.querySelectorAll('.lang button').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+        try { localStorage.setItem('zhura-lang', lang); } catch (e) {}
+      }
+
+      // Priority: ?lang= in the URL, then the saved choice, then the browser language. Default is Russian.
+      var initial = 'ru';
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var saved = localStorage.getItem('zhura-lang');
+        var nav = (navigator.language || '').slice(0, 2).toLowerCase();
+        if (q === 'srb') q = 'sr';
+        if (T[q]) initial = q;
+        else if (T[saved]) initial = saved;
+        else if (nav === 'sr' || nav === 'hr' || nav === 'bs') initial = 'sr';
+        else if (nav === 'en') initial = 'en';
+      } catch (e) {}
+      if (initial !== 'ru') setLang(initial);
+
+      document.querySelectorAll('.lang button').forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+      });
+    })();
+  </script>
 
 </body>
 </html>
