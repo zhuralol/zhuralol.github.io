@@ -79,7 +79,7 @@
       text-transform: uppercase;
       animation: rise 0.6s 0.1s ease-out both;
     }
-    h1 span {
+    h1 span:not(.t1) {
       display: inline-block;
       background: var(--red);
       color: var(--paper);
@@ -161,6 +161,34 @@
     .arrow { font-size: 18px; color: var(--red); transition: transform 0.12s ease; }
     .link:hover .arrow { transform: translateX(3px); }
 
+    .lang {
+      align-self: flex-end;
+      display: inline-flex;
+      margin: 0 0 1.75rem;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--paper);
+      animation: rise 0.6s ease-out both;
+    }
+    .lang button {
+      appearance: none;
+      border: 0;
+      margin: 0;
+      min-width: 48px;
+      min-height: 36px;
+      padding: 0 12px;
+      background: transparent;
+      color: var(--ink);
+      font: 500 12px/1 var(--mono);
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .lang button + button { border-left: 2px solid var(--ink); }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .lang button:focus-visible { outline: 2px solid var(--red); outline-offset: -4px; }
+
     @keyframes rise {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: none; }
@@ -183,12 +211,18 @@
 </head>
 <body>
   <main class="wrap">
-    <img class="logo" src="logo.jpg" width="320" height="320" alt="Логотип Левого Клуба Сербии">
+    <div class="lang" role="group" aria-label="Язык / Language / Jezik">
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="sr" aria-pressed="false">SRB</button>
+    </div>
 
-    <h1>Левый Клуб<br><span>Сербии</span></h1>
-    <p class="cities">Белград<i>/</i>Нови-Сад</p>
+    <img class="logo" src="logo.jpg" width="320" height="320" alt="Логотип Левого Клуба Сербии" data-i18n-alt="alt">
 
-    <p class="about">Сообщество русскоязычных левых в&nbsp;Сербии. Регулярные встречи, дискуссии, взаимопомощь.</p>
+    <h1><span data-i18n="title1" class="t1">Левый Клуб</span><br><span data-i18n="title2">Сербии</span></h1>
+    <p class="cities"><span data-i18n="city1">Белград</span><i>/</i><span data-i18n="city2">Нови-Сад</span></p>
+
+    <p class="about" data-i18n="about">Сообщество русскоязычных левых в&nbsp;Сербии. Регулярные встречи, дискуссии, взаимопомощь.</p>
 
     <ul class="links">
       <li>
@@ -211,5 +245,68 @@
       </li>
     </ul>
   </main>
+
+  <script>
+    (function () {
+      var T = {
+        ru: {
+          title: 'Левый Клуб Сербии',
+          title1: 'Левый Клуб', title2: 'Сербии',
+          city1: 'Белград', city2: 'Нови-Сад',
+          about: 'Сообщество русскоязычных левых в Сербии. Регулярные встречи, дискуссии, взаимопомощь.',
+          alt: 'Логотип Левого Клуба Сербии'
+        },
+        en: {
+          title: 'Left Club of Serbia',
+          title1: 'Left Club', title2: 'of Serbia',
+          city1: 'Belgrade', city2: 'Novi Sad',
+          about: 'A community of Russian-speaking leftists in Serbia. Regular meetups, discussions, mutual aid.',
+          alt: 'Left Club of Serbia logo'
+        },
+        sr: {
+          title: 'Levi Klub Srbije',
+          title1: 'Levi Klub', title2: 'Srbije',
+          city1: 'Beograd', city2: 'Novi Sad',
+          about: 'Zajednica rusofonih levičara u Srbiji. Redovni susreti, diskusije, uzajamna pomoć.',
+          alt: 'Logo Levog Kluba Srbije'
+        }
+      };
+
+      function setLang(lang) {
+        var t = T[lang];
+        if (!t) return;
+        document.documentElement.lang = lang;
+        document.title = t.title;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          el.textContent = t[el.getAttribute('data-i18n')];
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+          el.alt = t[el.getAttribute('data-i18n-alt')];
+        });
+        document.querySelectorAll('.lang button').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+        try { localStorage.setItem('leftclub-lang', lang); } catch (e) {}
+      }
+
+      // Priority: ?lang= in the URL, then the saved choice, then the browser language. Default is Russian.
+      var initial = 'ru';
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var saved = localStorage.getItem('leftclub-lang');
+        var nav = (navigator.language || '').slice(0, 2).toLowerCase();
+        if (q === 'srb') q = 'sr';
+        if (T[q]) initial = q;
+        else if (T[saved]) initial = saved;
+        else if (nav === 'sr' || nav === 'hr' || nav === 'bs') initial = 'sr';
+        else if (nav === 'en') initial = 'en';
+      } catch (e) {}
+      if (initial !== 'ru') setLang(initial);
+
+      document.querySelectorAll('.lang button').forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+      });
+    })();
+  </script>
 </body>
 </html>
