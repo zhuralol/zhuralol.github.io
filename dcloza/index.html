@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B0706">
+  <title>DC Loža · Belgrade</title>
+  <meta name="description" content="Independent space and community bar bringing together art, film, and collective action. Belgrade.">
+  <meta property="og:title" content="DC Loža">
+  <meta property="og:description" content="Independent space and community bar bringing together art, film, and collective action. Belgrade.">
+  <meta property="og:image" content="https://zhura.lol/dcloza/logo.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/jpeg" href="/dcloza/logo.jpg">
+  <link rel="apple-touch-icon" href="/dcloza/logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0B0706;
+      --surface: #160E0B;
+      --red: #B3241B;
+      --red-deep: #7E1712;
+      --gold: #E8B84A;
+      --gold-soft: #C99A35;
+      --text: #F3E6CF;
+      --muted: #A8957A;
+      --line: rgba(232, 184, 74, 0.28);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% 0%, rgba(179, 36, 27, 0.22), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 440px;
+      padding: max(2.5rem, env(safe-area-inset-top)) 1.25rem max(2.5rem, env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      width: 168px;
+      height: 168px;
+      border-radius: 50%;
+      display: block;
+      border: 1px solid var(--line);
+      box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--line), 0 18px 60px rgba(179, 36, 27, 0.35);
+      animation: rise 0.7s ease-out both;
+    }
+
+    h1 {
+      margin: 1.75rem 0 0.25rem;
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--gold);
+      animation: rise 0.7s 0.08s ease-out both;
+    }
+
+    .place {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      animation: rise 0.7s 0.14s ease-out both;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      margin: 1.5rem 0;
+      color: var(--gold-soft);
+      animation: rise 0.7s 0.2s ease-out both;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line));
+    }
+    .ornament::after { transform: scaleX(-1); }
+    .ornament svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .about {
+      margin: 0 0 2rem;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text);
+      max-width: 22em;
+      animation: rise 0.7s 0.26s ease-out both;
+    }
+
+    .links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: grid;
+      gap: 14px;
+    }
+    .links li { animation: rise 0.7s ease-out both; }
+    .links li:nth-child(1) { animation-delay: 0.32s; }
+    .links li:nth-child(2) { animation-delay: 0.4s; }
+    .links li:nth-child(3) { animation-delay: 0.48s; }
+
+    .link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 64px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(179, 36, 27, 0.16), rgba(126, 23, 18, 0.08)), var(--surface);
+      color: var(--text);
+      text-decoration: none;
+      text-align: left;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .link:hover, .link:focus-visible {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(179, 36, 27, 0.4), rgba(126, 23, 18, 0.25)), var(--surface);
+    }
+    .link:active { transform: scale(0.98); }
+    .link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      color: var(--gold);
+    }
+    .icon svg { width: 20px; height: 20px; }
+
+    .label { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+    .label strong { font-size: 22px; font-weight: 600; line-height: 1.1; }
+    .label span { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+    .arrow { color: var(--gold-soft); font-family: var(--mono); font-size: 18px; transition: transform 0.15s ease; }
+    .link:hover .arrow { transform: translateX(3px); }
+
+    .hours {
+      margin: 2.25rem 0 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      animation: rise 0.7s 0.56s ease-out both;
+    }
+    .hours b { color: var(--gold-soft); font-weight: 500; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    @media (min-width: 600px) {
+      .wrap { padding-top: 5rem; }
+      .logo { width: 196px; height: 196px; }
+      h1 { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="logo" src="logo.jpg" width="320" height="320" alt="DC Loža logo">
+
+    <h1>DC Loža</h1>
+    <p class="place">Belgrade</p>
+
+    <div class="ornament" aria-hidden="true">
+      <svg viewBox="0 0 14 14"><path d="M1 2h12L7 13z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+    </div>
+
+    <p class="about">Independent space and community bar bringing together art, film, and collective action.</p>
+
+    <ul class="links">
+      <li>
+        <a class="link" href="https://www.instagram.com/dc.loza/" target="_blank" rel="noopener">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="label"><strong>Instagram</strong><span>@dc.loza</span></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://t.me/dcloza" target="_blank" rel="noopener">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5ZM9.4 14.2l9-5.7c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1-1.8-4.3Z"/></svg>
+          </span>
+          <span class="label"><strong>Telegram</strong><span>t.me/dcloza</span></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://maps.app.goo.gl/KcwWuR8MKvZyL5Jy6" target="_blank" rel="noopener">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          </span>
+          <span class="label"><strong>Dalmatinska 84L</strong><span>Entrance from Ivankovačka st.</span></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="hours"><b>Wed–Sun</b> · 17:00 – 23:00/00:00</p>
+  </main>
+</body>
+</html>
